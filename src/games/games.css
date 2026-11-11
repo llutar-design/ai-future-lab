@@ -1,0 +1,827 @@
+/* 공통 보조 */
+.muted {
+  color: var(--muted);
+  font-size: 22px;
+}
+.muted.big,
+.big {
+  font-size: 28px;
+}
+.good-text {
+  color: var(--good);
+  font-weight: 800;
+}
+.bad-text {
+  color: var(--bad);
+  font-weight: 800;
+}
+.chart-title {
+  font-size: 22px;
+  color: var(--muted);
+  margin: 8px 0 2px;
+}
+.swatch {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border-radius: 4px;
+  vertical-align: -2px;
+}
+.scan-bar {
+  height: 10px;
+  margin: 18px 0;
+  border-radius: 5px;
+  background: linear-gradient(90deg, transparent, var(--cyan), transparent);
+  background-size: 40% 100%;
+  background-repeat: no-repeat;
+  animation: scanbar 1s linear infinite;
+}
+@keyframes scanbar {
+  from {
+    background-position: -40% 0;
+  }
+  to {
+    background-position: 140% 0;
+  }
+}
+
+/* ========== 게임 1: AI 훈련 연구소 ========== */
+.tg {
+  position: absolute;
+  inset: 0;
+  padding: 24px 36px;
+}
+.tg-center {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+}
+.tg-center.col {
+  flex-direction: column;
+  gap: 20px;
+}
+.tg-rulebox {
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+}
+.tg-rule-options {
+  display: flex;
+  gap: 26px;
+}
+.tg-opt {
+  width: 620px;
+}
+.tg-opt-o {
+  border-color: var(--o);
+}
+.tg-opt-x {
+  border-color: var(--x);
+}
+.tg-rule-text {
+  font-size: 32px;
+  font-weight: 800;
+  margin: 8px 0;
+}
+.tg-collect {
+  height: 100%;
+  display: flex;
+  gap: 24px;
+}
+.tg-bin {
+  width: 420px;
+  border: 4px solid;
+  border-radius: 28px;
+  background: var(--panel);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.tg-bin-title {
+  font-size: 36px;
+  font-weight: 900;
+  padding: 14px;
+  text-align: center;
+}
+.tg-bin-items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  padding: 10px;
+  align-content: flex-start;
+}
+.tg-stage {
+  position: relative;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+.tg-count {
+  font-size: 30px;
+  font-weight: 800;
+  color: var(--accent);
+}
+.tg-rule-remind {
+  font-size: 24px;
+  background: rgba(56, 189, 248, 0.15);
+  border-radius: 12px;
+  padding: 6px 16px;
+}
+.tg-creature-in {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: popIn 0.35s cubic-bezier(0.2, 0.9, 0.3, 1.4);
+}
+@keyframes popIn {
+  from {
+    transform: scale(0.4);
+    opacity: 0;
+  }
+}
+.tg-desc {
+  font-size: 26px;
+  color: #dbe4f5;
+}
+.tg-fly {
+  position: absolute;
+  top: 35%;
+  left: 50%;
+  margin-left: -80px;
+  pointer-events: none;
+}
+.tg-fly-0 {
+  animation: flyL 0.55s ease-in forwards;
+}
+.tg-fly-1 {
+  animation: flyR 0.55s ease-in forwards;
+}
+@keyframes flyL {
+  to {
+    transform: translate(-560px, 120px) scale(0.4);
+    opacity: 0;
+  }
+}
+@keyframes flyR {
+  to {
+    transform: translate(560px, 120px) scale(0.4);
+    opacity: 0;
+  }
+}
+.tg-mini-stats {
+  font-size: 28px;
+  font-weight: 800;
+}
+.tg-train {
+  height: 100%;
+  display: flex;
+  gap: 22px;
+}
+.tg-train-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.tg-charts {
+  display: flex;
+  gap: 20px;
+}
+.tg-acc-row {
+  display: flex;
+  gap: 50px;
+  font-size: 30px;
+}
+.tg-acc-row b {
+  font-size: 44px;
+  color: var(--accent);
+}
+.tg-acc-row small {
+  font-size: 20px;
+  color: var(--muted);
+}
+.tg-note {
+  font-size: 24px;
+  background: rgba(251, 191, 36, 0.12);
+  border-radius: 12px;
+  padding: 10px 16px;
+}
+.tg-train-side {
+  width: 600px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.tg-colortable {
+  width: 100%;
+  font-size: 22px;
+  border-collapse: collapse;
+}
+.tg-colortable td,
+.tg-colortable th {
+  padding: 3px 10px;
+  text-align: left;
+}
+.tg-bias {
+  font-size: 22px;
+  margin-top: 6px;
+}
+.tg-val-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.tg-val {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 20px;
+  border-radius: 12px;
+  padding: 4px 8px;
+}
+.tg-val.ok {
+  background: rgba(52, 211, 153, 0.15);
+}
+.tg-val.no {
+  background: rgba(248, 113, 113, 0.2);
+}
+.tg-predict {
+  height: 100%;
+  display: flex;
+  gap: 22px;
+}
+.tg-pred-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.tg-pred-card {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  padding: 20px;
+  border-radius: 24px;
+}
+.tg-pred-info {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  flex: 1;
+}
+.tg-pred-info .good-text,
+.tg-pred-info .bad-text {
+  font-size: 32px;
+}
+.tg-thinking {
+  font-size: 40px;
+  font-weight: 800;
+  color: var(--cyan);
+  animation: pulse 0.8s infinite;
+}
+.tg-ai-says {
+  font-size: 48px;
+  font-weight: 900;
+}
+.tg-conf {
+  font-size: 28px;
+}
+.tg-proba {
+  font-size: 24px;
+  color: var(--muted);
+}
+.tg-pred-side {
+  width: 520px;
+}
+.tg-score {
+  font-size: 44px;
+  font-weight: 900;
+  margin-bottom: 10px;
+}
+.tg-fix-row {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.tg-fix-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 24px;
+}
+.tg-retrain {
+  width: 1200px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.tg-exam {
+  height: 100%;
+  display: flex;
+  gap: 22px;
+}
+.tg-exam > .panel:first-child {
+  flex: 1;
+}
+.tg-perclass {
+  font-size: 26px;
+  margin-top: 14px;
+}
+.tg-exam-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  width: 560px;
+}
+.tg-exam-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 22px;
+  background: rgba(13, 25, 60, 0.6);
+  border-radius: 14px;
+  padding: 6px;
+}
+
+/* ========== 게임 4: 강화학습 아레나 ========== */
+.ar {
+  position: absolute;
+  inset: 0;
+  display: flex;
+}
+.ar-3d {
+  position: relative;
+  flex: 1;
+}
+.ar-maze-name {
+  position: absolute;
+  left: 20px;
+  top: 16px;
+  font-size: 28px;
+  font-weight: 800;
+  z-index: 2;
+  text-shadow: 0 2px 6px #000;
+}
+.ar-side {
+  width: 780px;
+  padding: 18px 26px 18px 0;
+  overflow: hidden;
+}
+.ar-panel {
+  background: var(--panel);
+  border: 2px solid var(--line);
+  border-radius: 24px;
+  padding: 18px 24px;
+  height: 100%;
+  overflow: hidden;
+}
+.ar-panel h2 {
+  margin: 0 0 14px;
+  font-size: 34px;
+  color: var(--accent);
+}
+.ar-panel .choice-list {
+  gap: 8px;
+}
+.ar-panel .choice {
+  font-size: 26px;
+  padding: 9px 18px;
+}
+.ar-panel .choice small {
+  font-size: 18px;
+}
+.ar-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-bottom: 8px;
+}
+.ar-stat {
+  background: rgba(5, 10, 31, 0.6);
+  border-radius: 14px;
+  padding: 8px 14px;
+}
+.ar-stat-k {
+  font-size: 19px;
+  color: var(--muted);
+}
+.ar-stat-v {
+  font-size: 30px;
+  font-weight: 900;
+}
+.ar-champ .chart-title {
+  margin-top: 4px;
+}
+.choice-start {
+  border-color: rgba(52, 211, 153, 0.6);
+}
+
+/* ========== 게임 2: 자율주행 ========== */
+.dg {
+  position: absolute;
+  inset: 0;
+}
+.dg-3d {
+  position: absolute;
+  inset: 0;
+}
+.dg-sim-tag {
+  position: absolute;
+  right: 24px;
+  top: 14px;
+  font-size: 20px;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 6px 12px;
+  border-radius: 12px;
+  z-index: 3;
+}
+.dg-question {
+  position: absolute;
+  left: 24px;
+  top: 20px;
+  width: 640px;
+  background: var(--panel);
+  border: 3px solid var(--accent);
+  border-radius: 28px;
+  padding: 18px 30px;
+  text-align: center;
+  z-index: 3;
+}
+.dg-q-count {
+  font-size: 24px;
+  color: var(--accent);
+  font-weight: 800;
+}
+.dg-facts {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 10px;
+}
+.dg-facts .tag {
+  font-size: 24px;
+}
+.dg-train {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 1300px;
+  z-index: 3;
+  background: rgba(10, 20, 50, 0.94);
+}
+.dg-train-row {
+  display: flex;
+  gap: 30px;
+}
+.dg-train-info {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  font-size: 26px;
+}
+.dg-train-info small {
+  font-size: 20px;
+}
+.dg-hud {
+  position: absolute;
+  left: 20px;
+  top: 16px;
+  width: 470px;
+  z-index: 3;
+  background: rgba(10, 20, 50, 0.85);
+  padding: 14px 20px;
+}
+.dg-hud h3 {
+  font-size: 26px;
+}
+.dg-speed {
+  font-size: 72px;
+  font-weight: 900;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+.dg-speed small {
+  font-size: 26px;
+  margin-left: 6px;
+  color: var(--muted);
+}
+.dg-zone {
+  font-size: 26px;
+  font-weight: 800;
+  color: var(--warn);
+  margin: 4px 0;
+}
+.dg-row {
+  display: grid;
+  grid-template-columns: 130px 1fr;
+  align-items: center;
+  gap: 10px;
+  font-size: 21px;
+  margin: 6px 0;
+}
+.dg-objs {
+  margin-top: 8px;
+  font-size: 22px;
+  min-height: 120px;
+}
+.dg-objs-title {
+  font-size: 19px;
+  color: var(--muted);
+}
+.dg-log {
+  font-size: 19px;
+  margin-top: 8px;
+  color: #cbd5e1;
+  max-height: 170px;
+  overflow: hidden;
+}
+.dg-decision {
+  position: absolute;
+  right: 30px;
+  top: 80px;
+  width: 520px;
+  z-index: 3;
+  background: rgba(10, 20, 50, 0.92);
+  border-color: var(--cyan);
+  text-align: center;
+  font-size: 26px;
+}
+.dg-ai-head {
+  font-size: 30px;
+  font-weight: 800;
+}
+.dg-ai-dec {
+  font-size: 64px;
+  font-weight: 900;
+  margin: 6px 0;
+}
+.dg-ai-dec.go {
+  color: var(--good);
+}
+.dg-ai-dec.stop {
+  color: var(--bad);
+}
+.dg-banner {
+  position: absolute;
+  left: 50%;
+  top: 110px;
+  transform: translateX(-50%);
+  font-size: 34px;
+  font-weight: 900;
+  padding: 14px 30px;
+  border-radius: 20px;
+  z-index: 3;
+  animation: screenIn 0.3s;
+}
+.dg-banner.warn {
+  background: rgba(239, 68, 68, 0.92);
+}
+.dg-banner.safe {
+  background: rgba(16, 185, 129, 0.92);
+}
+.dg-banner.info {
+  background: rgba(59, 130, 246, 0.92);
+}
+.dg-done {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 1250px;
+  z-index: 4;
+  background: rgba(10, 20, 50, 0.95);
+}
+.dg-table {
+  width: 100%;
+  font-size: 22px;
+  border-collapse: collapse;
+  margin: 8px 0;
+}
+.dg-table th,
+.dg-table td {
+  padding: 6px 10px;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.25);
+  text-align: left;
+}
+
+/* ========== 게임 3: 딥페이크 탐정단 ========== */
+.df {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  gap: 22px;
+  padding: 20px 30px;
+}
+.df-media {
+  width: 1060px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.df-media-head {
+  font-size: 30px;
+}
+.df-media-box {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 3px solid #1e293b;
+}
+.df-svg {
+  display: block;
+  width: 100%;
+}
+.df-caption {
+  font-size: 24px;
+}
+.df-hl {
+  animation: hl 1.2s ease-in-out infinite;
+}
+@keyframes hl {
+  50% {
+    stroke-opacity: 0.35;
+  }
+}
+.df-mouth {
+  transform-origin: 400px 210px;
+  animation: talk 0.28s infinite alternate;
+}
+.df-logo {
+  animation: logo 0.9s steps(2) infinite;
+  transform-origin: 640px 110px;
+}
+@keyframes logo {
+  50% {
+    transform: scale(1.06, 0.94) skewX(4deg);
+  }
+}
+.df-rec {
+  animation: pulse 1s infinite;
+}
+.df-side {
+  flex: 1;
+  min-width: 0;
+}
+.df-panel {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  overflow: hidden;
+}
+.df-ev-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.df-ev {
+  border: 3px solid rgba(148, 163, 184, 0.3);
+  border-radius: 16px;
+  padding: 8px 16px;
+  background: rgba(5, 10, 31, 0.5);
+  transition: all 0.2s;
+}
+.df-ev.cursor {
+  border-color: var(--o);
+  box-shadow: 0 0 22px var(--o-glow);
+  transform: translateX(8px);
+}
+.df-ev.open {
+  background: rgba(192, 132, 252, 0.14);
+}
+.df-ev-title {
+  font-size: 26px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.df-ev-find {
+  font-size: 21px;
+  margin-top: 4px;
+  line-height: 1.4;
+  word-break: keep-all;
+}
+.df-ev-done {
+  font-size: 26px;
+  font-weight: 800;
+  border-color: rgba(52, 211, 153, 0.6);
+}
+.df-w {
+  font-size: 17px;
+  border-radius: 999px;
+  padding: 2px 10px;
+  margin-left: auto;
+}
+.df-w-strong {
+  background: #c084fc;
+  color: #1e0636;
+}
+.df-w-medium {
+  background: #818cf8;
+  color: #0b1035;
+}
+.df-w-weak {
+  background: #64748b;
+}
+.df-w-none {
+  background: #334155;
+}
+.df-gauge {
+  margin: 10px 0;
+}
+.df-gauge-bar {
+  position: relative;
+  height: 40px;
+  border-radius: 20px;
+  background: linear-gradient(90deg, #34d399, #fbbf24, #f87171);
+  overflow: hidden;
+}
+.df-gauge-fill {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  border-right: 6px solid #fff;
+  background: transparent;
+}
+.df-gauge-zone {
+  position: absolute;
+  left: 40%;
+  width: 30%;
+  top: 0;
+  bottom: 0;
+  background: repeating-linear-gradient(45deg, rgba(0, 0, 0, 0.15) 0 10px, transparent 10px 20px);
+}
+.df-gauge-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 18px;
+  color: var(--muted);
+}
+.df-score {
+  font-size: 34px;
+  font-weight: 900;
+  margin-top: 6px;
+}
+.df-note {
+  font-size: 22px;
+  background: rgba(192, 132, 252, 0.14);
+  border-radius: 12px;
+  padding: 10px 14px;
+  word-break: keep-all;
+}
+.df-limits {
+  font-size: 21px;
+  margin: 0;
+  padding-left: 26px;
+  line-height: 1.5;
+}
+.df-recap {
+  font-size: 26px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.df-recap-ev {
+  font-size: 22px;
+  padding-left: 14px;
+}
+.df-verdict {
+  font-size: 44px;
+  font-weight: 900;
+}
+.df-verdict.good {
+  color: var(--good);
+}
+.df-verdict.bad {
+  color: var(--warn);
+}
+.df-truth {
+  font-size: 27px;
+  font-weight: 800;
+}
+.df-cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px 20px;
+  font-size: 20px;
+}
+.df-cols h4 {
+  margin: 0 0 4px;
+  font-size: 22px;
+  color: var(--accent);
+}
+.df-limit-one {
+  font-size: 19px;
+  color: var(--muted);
+}

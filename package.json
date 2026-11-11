@@ -1,0 +1,69 @@
+{
+  "name": "ai-future-lab",
+  "productName": "AI FUTURE LAB",
+  "version": "1.0.0",
+  "description": "AI FUTURE LAB — AI 미래체험 연구소 (O/X 발판 4 in 1 AI 체험 키오스크)",
+  "private": true,
+  "type": "module",
+  "main": "electron/main.cjs",
+  "scripts": {
+    "dev": "vite",
+    "typecheck": "tsc --noEmit -p .",
+    "build": "tsc --noEmit -p . && vite build",
+    "preview": "vite preview --port 4173",
+    "test": "vitest run",
+    "e2e": "vite build && node scripts/e2e.mjs",
+    "e2e:quick": "vite build && node scripts/e2e.mjs --quick",
+    "smoke:electron": "node scripts/electron-smoke.mjs",
+    "kiosk": "electron .",
+    "kiosk:windowed": "electron . --windowed",
+    "dist:win": "npm run build && electron-builder --win portable nsis --x64",
+    "check:system": "powershell -ExecutionPolicy Bypass -File scripts/check-system.ps1"
+  },
+  "build": {
+    "appId": "kr.school.aifuturelab",
+    "productName": "AI FUTURE LAB",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "dist/**",
+      "electron/**",
+      "package.json"
+    ],
+    "win": {
+      "target": [
+        "portable",
+        "nsis"
+      ]
+    },
+    "portable": {
+      "artifactName": "AI-FUTURE-LAB-${version}-portable.exe"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "shortcutName": "AI FUTURE LAB",
+      "artifactName": "AI-FUTURE-LAB-${version}-setup.exe"
+    }
+  },
+  "dependencies": {
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "three": "^0.186.1",
+    "zustand": "^5.0.16"
+  },
+  "devDependencies": {
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@types/three": "^0.186.0",
+    "@vitejs/plugin-react": "^6.1.2",
+    "electron": "^45.1.0",
+    "electron-builder": "^26.18.0",
+    "playwright-core": "^1.64.1",
+    "typescript": "^7.0.2",
+    "vite": "^8.3.5",
+    "vitest": "^5.0.5"
+  }
+}
