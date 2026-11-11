@@ -25,6 +25,7 @@ export function App() {
   const adminOpen = useApp((s) => s.adminOpen);
   const rt = useMemo(() => getInputRuntime(useApp.getState().settings), []);
   const scale = useStageScale(settings.fit);
+  const mouseActive = useMouseActive();
 
   useEffect(() => {
     applyInputSettings(settings);
@@ -121,7 +122,7 @@ export function App() {
 
   const q = settings.quality === 'auto' ? 'high' : settings.quality;
   return (
-    <div className={`viewport ${adminOpen ? 'show-cursor' : ''}`}>
+    <div className={`viewport ${adminOpen || mouseActive ? 'show-cursor' : ''}`}>
       <div className="stage" style={{ transform: `translate(-50%, -50%) scale(${scale.x}, ${scale.y})` }}>
         {screen === 'menu' && <Background quality={q} />}
         {screen === 'menu' ? <MainMenu /> : <GameHost />}
@@ -131,6 +132,26 @@ export function App() {
       {adminOpen && <AdminPanel />}
     </div>
   );
+}
+
+/** 평소엔 커서를 숨기고(키오스크), 마우스를 움직이면 2초 동안만 보여줌(웹 체험에서 클릭용) */
+function useMouseActive() {
+  const [active, setActive] = useState(false);
+  useEffect(() => {
+    let t: ReturnType<typeof setTimeout>;
+    const on = (e: PointerEvent) => {
+      if (e.pointerType !== 'mouse') return;
+      setActive(true);
+      clearTimeout(t);
+      t = setTimeout(() => setActive(false), 2000);
+    };
+    window.addEventListener('pointermove', on);
+    return () => {
+      window.removeEventListener('pointermove', on);
+      clearTimeout(t);
+    };
+  }, []);
+  return active;
 }
 
 /** 1920×1080 무대를 창 크기에 맞춰 확대/축소 */

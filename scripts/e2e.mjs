@@ -146,6 +146,11 @@ async function main() {
   await page.keyboard.up('a');
   await sleep(PRESS_GAP);
   record('길게 밟기 시 한 번만 이동', (await selectedCard()) === 2, `선택=${await selectedCard()}`);
+
+  // 화면의 O/X 버튼 클릭·터치 (웹 체험용)
+  await page.click('.pad-O');
+  await sleep(PRESS_GAP);
+  record('화면 O 버튼 클릭으로 메뉴 이동', (await selectedCard()) === 3, `선택=${await selectedCard()}`);
   await goToMenuCard(0);
 
   // ---------- 4. 관리자 메뉴 ----------

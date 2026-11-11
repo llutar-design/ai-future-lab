@@ -14,6 +14,7 @@
     "test": "vitest run",
     "e2e": "vite build && node scripts/e2e.mjs",
     "e2e:quick": "vite build && node scripts/e2e.mjs --quick",
+    "deploy:web": "node scripts/deploy-web.mjs",
     "smoke:electron": "node scripts/electron-smoke.mjs",
     "kiosk": "electron .",
     "kiosk:windowed": "electron . --windowed",

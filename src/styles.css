@@ -107,6 +107,13 @@ body,
     box-shadow 0.15s,
     opacity 0.2s;
 }
+.pad {
+  touch-action: none;
+  -webkit-tap-highlight-color: transparent;
+}
+.show-cursor .pad {
+  cursor: pointer;
+}
 .pad-O {
   border-color: var(--o);
   background: linear-gradient(90deg, rgba(47, 123, 255, 0.35), rgba(47, 123, 255, 0.08));

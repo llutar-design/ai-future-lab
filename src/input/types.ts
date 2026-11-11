@@ -1,5 +1,5 @@
 export type Pedal = 'O' | 'X';
-export type InputSource = 'keyboard' | 'gamepad' | 'test';
+export type InputSource = 'keyboard' | 'gamepad' | 'pointer' | 'test';
 
 export interface PedalEvent {
   pedal: Pedal;
