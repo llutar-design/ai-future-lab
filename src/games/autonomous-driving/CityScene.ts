@@ -276,7 +276,8 @@ export class CityScene {
       zone.position.set(ROAD_W / 4, 0.012, z(stopLine + 4));
       root.add(zone);
       const sign = textSprite('어린이 보호구역 30', { bg: '#dc2626', size: 48, scale: 1.4 });
-      sign.position.set(ROAD_W / 2 + 1, 3.2, z(stopLine - 8));
+      // 차 앞쪽 길가에 세워 카메라를 가리지 않게
+      sign.position.set(ROAD_W / 2 + 2, 3.2, z(stopLine + 14));
       root.add(sign);
     }
     if (s.light !== 'none') {
